@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" /> <!-- Style-CSS --> 
 	<link rel="stylesheet" href="css/font-awesome.min.css"> <!-- Font-Awesome-Icons-CSS -->
 	<!-- //css files -->
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!--web font--><link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	<!--//web font-->
 
@@ -238,7 +238,7 @@
 			</div>
 			<div class="col-lg-7 mt-lg-0 mt-5 contact-right">
 				<h4 class="mb-4">Get In Touch</h4>
-				<form action="#" method="post">
+				<form id="submit-form"  action="">
 					<label><span class="fa mr-2 fa-user" aria-hidden="true"></span> Name</label>
 					<input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
 					<div class="clearfix"></div>
@@ -360,6 +360,25 @@
 		</div>
 	</div>
 <!-- //popup for gallery -->
+<script>
+	$("#submit-form").submit((e)=>{
+		e.preventDefault()
+		$.ajax({
+			url:"https://script.google.com/macros/s/AKfycbybQDJ14WNi4a1vpyp_L1DTiTY72zS4H7VGNYDHjXjj-y48WeHHnSx3PoOKH-kvhN6e/exec",
+			data:$("#submit-form").serialize(),
+			method:"post",
+			success:function (response){
+				alert("Form submitted successfully")
+				window.location.reload()
+				//window.location.href="https://google.com"
+			},
+			error:function (err){
+				alert("Something Error")
+
+			}
+		})
+	})
+</script>
 
 </body>
 </html>
